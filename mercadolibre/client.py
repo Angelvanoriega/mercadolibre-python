@@ -153,8 +153,8 @@ class Client(object):
             A dict.
         """
         return self._get('/users/{}/brands'.format(user_id))
-		
-	@valid_token
+
+    @valid_token
     def get_items_ids(self, user_id):
         """This resource retrieves brands associated to an user_id. The official_store_id attribute identifies a store.
 
@@ -176,7 +176,8 @@ class Client(object):
         Returns:
             A dict.
         """
-        return self._get('/users/{}/classifieds_promotion_packs'.format(user_id))
+        return self._get(
+            '/users/{}/classifieds_promotion_packs'.format(user_id))
 
     def create_user_classifields_promotion_packs(self):
         raise NotImplementedError
@@ -344,8 +345,10 @@ class Client(object):
         return self._get('/currencies/{}'.format(currency_id))
 
     @valid_token
-    def list_item(self, title, condition, category_id, price, currency_id, available_quantity, buying_mode,
-                  listing_type_id, warranty, description=None, video_id=None, pictures=None, **kwargs):
+    def list_item(self, title, condition, category_id, price, currency_id,
+                  available_quantity, buying_mode,
+                  listing_type_id, warranty, description=None, video_id=None,
+                  pictures=None, **kwargs):
         """
 
         Args:
@@ -413,7 +416,8 @@ class Client(object):
         _params = {'access_token': self.access_token}
         if params:
             _params.update(params)
-        response = requests.request(method, self.BASE_URL + endpoint, params=_params, **kwargs)
+        response = requests.request(method, self.BASE_URL + endpoint,
+                                    params=_params, **kwargs)
         return self._parse(response)
 
     def _parse(self, response):
