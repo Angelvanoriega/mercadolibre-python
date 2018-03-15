@@ -153,6 +153,18 @@ class Client(object):
             A dict.
         """
         return self._get('/users/{}/brands'.format(user_id))
+		
+	@valid_token
+    def get_items_ids(self, user_id):
+        """This resource retrieves brands associated to an user_id. The official_store_id attribute identifies a store.
+
+        Args:
+            user_id:
+
+        Returns:
+            A dict.
+        """
+        return self._get('/users/{}/items/search'.format(user_id))
 
     @valid_token
     def get_user_classifields_promotion_packs(self, user_id):
